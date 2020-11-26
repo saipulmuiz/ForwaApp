@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.dashboard.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/memberFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.members.member.MemberFragment"
+        android:label="MemberFragment"
+        tools:layout="@layout/fragment_member">
+        <action
+            android:id="@+id/action_memberFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
+        <action
+            android:id="@+id/action_memberFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.members.detail.MemberDetailFragment"
+        android:label="fragment_user_detail"
+        tools:layout="@layout/fragment_member_detail">
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userDetailFragment_self"
+            app:destination="@id/userDetailFragment" />
+        <argument
+            android:name="user"
+            app:argType="id.saipulmuiz.forwaapp.data.model.UserDetail"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_userDetailFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.setting.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.notifications.NotificationsFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.event.EventFragment"
+        android:label="EventFragment"
+        tools:layout="@layout/fragment_event">
+
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.notifications.NotificationsFragment"
+        android:label="NotificationsFragment"
+        tools:layout="@layout/fragment_notifications">
+
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="id.saipulmuiz.forwaapp.ui.event.detail.EventDetailFragment"
+        android:label="EventDetailFragment" >
+        <argument
+            android:name="event_id"
+            app:argType="string" />
+        <argument
+            android:name="event"
+            app:argType="id.saipulmuiz.forwaapp.data.model.EventDetail"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_eventDetailFragment_self"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+</navigation>

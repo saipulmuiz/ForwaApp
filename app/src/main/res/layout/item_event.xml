@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="event"
+            type="id.saipulmuiz.forwaapp.data.model.EventList" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/frame_profile"
+        android:paddingTop="12dp">
+
+        <ImageView
+            android:id="@+id/item_event_img"
+            imageRetUrl="@{event.img_event}"
+            android:layout_width="90dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
+            android:contentDescription="@string/item_user_desc_image_profile"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/img_picture" />
+
+        <TextView
+            android:id="@+id/itemEvent_tv_name"
+            style="@style/home_tv_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:ellipsize="end"
+            android:text="@{event.nama_event}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_event_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Event Name" />
+
+        <TextView
+            android:id="@+id/itemEvent_tv_date"
+            style="@style/home_tv_subTittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{event.tgl_mulai}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/itemEvent_tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/itemEvent_tv_name"
+            tools:text="Event Date" />
+
+        <TextView
+            android:id="@+id/itemEvent_tv_location"
+            style="@style/event_tv_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="@{event.lokasi_event}"
+            app:layout_constraintEnd_toEndOf="@+id/itemEvent_tv_date"
+            app:layout_constraintStart_toStartOf="@+id/itemEvent_tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/itemEvent_tv_date"
+            tools:text="Event location" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

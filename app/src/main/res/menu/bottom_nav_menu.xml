@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:menuCategory="secondary"
+        android:title="@string/title_dashboard" />
+    <item
+        android:id="@+id/memberFragment"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:menuCategory="secondary"
+        android:title="@string/title_member" />
+    <item
+        android:id="@+id/eventFragment"
+        android:icon="@drawable/ic_baseline_event_24"
+        android:menuCategory="secondary"
+        android:title="@string/title_event" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:menuCategory="secondary"
+        android:title="@string/title_profile" />
+
+</menu>

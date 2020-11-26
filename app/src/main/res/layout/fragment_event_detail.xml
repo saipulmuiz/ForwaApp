@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="event"
+            type="id.saipulmuiz.forwaapp.data.model.EventDetail" />
+
+        <variable
+            name="placeholder"
+            type="id.saipulmuiz.forwaapp.data.model.ViewPlaceholder" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:expandedTitleGravity="center"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <ImageView
+                    android:id="@+id/profile_img_profile"
+                    imageDefUrl="@{event.img_event}"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:contentDescription="@string/profile_desc_image_profile"
+                    android:scaleType="fitXY"
+                    tools:src="@drawable/img_picture" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/event_det_btn_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/float_transparent"
+                        android:drawableLeft="@drawable/ic_baseline_chevron_left_24"
+                        android:padding="0dp"
+                        android:text="@string/title_back" />
+
+                    <ImageButton
+                        android:id="@+id/event_det_btn_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/ic_baseline_share_24"
+                        android:contentDescription="@string/profile_desc_button_back"
+                        android:scaleType="centerInside"
+                        app:tint="@color/colorWhite" />
+                </RelativeLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/vg_event_created"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/frame_profile">
+
+                    <ProgressBar
+                        android:id="@+id/event_progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="150dp"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/event_img_created"
+                        imageUrl="@{event.photo}"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/profile_desc_image_profile"
+                        android:src="@drawable/img_picture" />
+
+                    <TextView
+                        android:id="@+id/title_created_event"
+                        style="@style/eventdet_tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@id/event_img_created"
+                        android:text="Created By"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/tv_created_event"
+                        style="@style/profile_tv_subTittle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_created_event"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-1dp"
+                        android:layout_toEndOf="@id/event_img_created"
+                        android:text="@{event.created_by}"
+                        tools:text="Adam Smith" />
+
+                    <TextView
+                        android:id="@+id/tv_event_title"
+                        style="@style/eventdet_tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/event_img_created"
+                        android:layout_marginLeft="10dp"
+                        android:text="@{event.nama_event}"
+                        tools:text="World Cleanup Day" />
+
+                    <ImageView
+                        android:id="@+id/img_date"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/tv_event_title"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_event_24" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        style="@style/profile_tv_subTittle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_event_title"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@id/img_date"
+                        android:text="@{event.tgl_mulai}"
+                        android:textSize="10sp"
+                        tools:text="Sun, 22 July 2020" />
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        style="@style/profile_tv_subTittle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_date"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/img_date"
+                        android:text="@{event.waktu_mulai + ` To `+ event.waktu_selesai}"
+                        android:textStyle="normal"
+                        tools:text="12 PM to 10 PM" />
+
+                    <ImageView
+                        android:id="@+id/img_location"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/img_date"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/ic_baseline_location_on_24" />
+
+                    <TextView
+                        android:id="@+id/title_location"
+                        style="@style/profile_tv_subTittle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_time"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@id/img_location"
+                        android:text="Get Direction"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tv_location"
+                        style="@style/profile_tv_subTittle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_location"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/img_location"
+                        android:text="@{event.lokasi_event}"
+                        android:textStyle="normal"
+                        tools:text="Ciamis, West Java" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/profile_nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_event_detail"
+                    style="@style/eventdet_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event Detail"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_detail"
+                    style="@style/eventdet_tv_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{event.deskripsi_event}"
+                    tools:text="Lorem ipsum dolor nonumy eirmod tempor invidunt ut labore... more" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/red_button_background"
+                    android:text="JOIN NOW" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
