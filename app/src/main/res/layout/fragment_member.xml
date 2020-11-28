@@ -62,6 +62,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
+                        android:autofillHints="Saipul Muiz"
                         android:background="@null"
                         android:fontFamily="@font/segoeui"
                         android:hint="@string/home_search"
@@ -100,39 +101,74 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <ProgressBar
-                android:id="@+id/member_progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="?attr/actionBarSize"
-                android:padding="150dp"
-                android:visibility="gone" />
-
             <include
                 layout="@layout/include_placeholder_view"
                 android:visibility="@{placeholder.show? View.VISIBLE : View.GONE}"
                 bind:data="@{placeholder}"
                 tools:visibility="visible" />
 
-            <androidx.core.widget.NestedScrollView
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_member"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                tools:visibility="gone">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/member_rv_user"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:paddingHorizontal="20dp"
-                    android:paddingTop="14dp"
-                    android:paddingBottom="20dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_user" />
+                    android:orientation="vertical">
 
-            </androidx.core.widget.NestedScrollView>
+                    <include layout="@layout/item_member_shimmer" />
+
+                    <include layout="@layout/item_member_shimmer" />
+
+                    <include layout="@layout/item_member_shimmer" />
+
+                    <include layout="@layout/item_member_shimmer" />
+
+                    <include layout="@layout/item_member_shimmer" />
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nested_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/member_rv_user"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clipToPadding="false"
+                            android:paddingHorizontal="20dp"
+                            android:paddingTop="14dp"
+                            android:paddingBottom="20dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_user" />
+
+                        <ProgressBar
+                            android:id="@+id/member_progressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="?attr/actionBarSize"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

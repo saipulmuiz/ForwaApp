@@ -19,11 +19,11 @@ class MemberRepository @Inject constructor(
     private val compositeDisposable = CompositeDisposable()
 
     // Function : for get data list search user from api
-    fun getUserSearch(keyword: String): LiveData<Status<SearchResponse>> {
+    fun getUserSearch(keyword: String, pages: String): LiveData<Status<SearchResponse>> {
         val liveData = MutableLiveData<Status<SearchResponse>>()
 
         compositeDisposable.add(
-            api.getSearchUser(keyword)
+            api.getSearchUser(keyword, pages)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(

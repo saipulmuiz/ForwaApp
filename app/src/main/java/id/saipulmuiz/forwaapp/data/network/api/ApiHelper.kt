@@ -1,7 +1,6 @@
 package id.saipulmuiz.forwaapp.data.network.api
 
 import id.saipulmuiz.forwaapp.data.model.EventDetail
-import id.saipulmuiz.forwaapp.data.model.EventList
 import id.saipulmuiz.forwaapp.data.model.UserDetail
 import id.saipulmuiz.forwaapp.data.model.response.EventItems
 import id.saipulmuiz.forwaapp.data.model.response.SearchResponse
@@ -44,7 +43,8 @@ interface ApiHelper {
     /* --- User --- */
     @GET("search/users")
     fun getSearchUser(
-        @Query("q") keyword: String
+        @Query("q") keyword: String,
+        @Query("page") pages: String
     ): Observable<SearchResponse>
 
     @GET("users/{username}")

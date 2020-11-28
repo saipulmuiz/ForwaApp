@@ -14,7 +14,7 @@ class UserSearchAdapter(
     private val listener: Listener
 ) : RecyclerView.Adapter<UserSearchAdapter.ViewHolder>() {
 
-    private var list: List<UserSearch> = listOf()
+    private var list = ArrayList<UserSearch>()
 
     inner class ViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -41,8 +41,13 @@ class UserSearchAdapter(
     }
 
     // Function : for change data in adapter
-    fun setList(list: List<UserSearch>) {
-        this.list = list
+    fun addList(items: ArrayList<UserSearch>) {
+        list.addAll(items)
+        notifyDataSetChanged()
+    }
+
+    fun clear(){
+        list.clear()
         notifyDataSetChanged()
     }
 

@@ -1,9 +1,5 @@
 package id.saipulmuiz.forwaapp.util
 
-import android.content.ContentValues
-import android.database.Cursor
-import id.saipulmuiz.forwaapp.data.model.UserDetail
-import java.util.*
 
 // Function : for convert from UserEntity to UserDetail
 // fun UserEntity.toUserDetail(): UserDetail =

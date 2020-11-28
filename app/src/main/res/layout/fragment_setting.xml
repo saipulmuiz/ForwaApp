@@ -26,7 +26,7 @@
                 android:contentDescription="@string/profile_desc_button_back"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_all_arrow"
-                android:tint="@color/colorWhite" />
+                app:tint="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/setting_toolbar_tittle"

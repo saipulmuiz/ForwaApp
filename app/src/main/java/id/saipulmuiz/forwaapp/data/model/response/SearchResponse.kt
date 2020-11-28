@@ -4,6 +4,9 @@ import id.saipulmuiz.forwaapp.data.model.UserSearch
 
 // Data Class SearchResponse; Keyword : DataClass
 data class SearchResponse(
-    val items: List<UserSearch>,
-    val total_count: Int
+    val total_count: Int,
+    val page: String,
+    val per_page: Int,
+    val total_pages: Int,
+    val items: ArrayList<UserSearch>
 )

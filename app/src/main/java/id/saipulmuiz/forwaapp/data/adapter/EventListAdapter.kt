@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import id.saipulmuiz.forwaapp.R
 import id.saipulmuiz.forwaapp.data.model.EventList
 import id.saipulmuiz.forwaapp.databinding.ItemEventBinding
-import id.saipulmuiz.forwaapp.databinding.ItemUserBinding
 
 class EventListAdapter(
     private val listener: Listener

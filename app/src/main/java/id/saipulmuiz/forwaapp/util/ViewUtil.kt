@@ -16,7 +16,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import id.saipulmuiz.forwaapp.R
-import kotlin.math.round
 
 
 // Util for view; Keyword : Util

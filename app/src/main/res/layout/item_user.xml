@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp">
+        android:padding="12dp">
+
 
         <ImageView
             android:id="@+id/item_user_img_profile"
@@ -56,15 +57,6 @@
             app:layout_constraintStart_toStartOf="@+id/itemUser_tv_name"
             app:layout_constraintTop_toBottomOf="@+id/itemUser_tv_name"
             tools:text="Role" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/colorGreySoft3"
-            app:layout_constraintEnd_toEndOf="@+id/itemUser_tv_company"
-            app:layout_constraintStart_toStartOf="@+id/itemUser_tv_company"
-            app:layout_constraintTop_toBottomOf="@+id/itemUser_tv_company" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

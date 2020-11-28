@@ -3,7 +3,6 @@ package id.saipulmuiz.forwaapp.data.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import id.saipulmuiz.forwaapp.data.model.EventDetail
-import id.saipulmuiz.forwaapp.data.model.EventList
 import id.saipulmuiz.forwaapp.data.model.Status
 import id.saipulmuiz.forwaapp.data.network.api.ApiHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
