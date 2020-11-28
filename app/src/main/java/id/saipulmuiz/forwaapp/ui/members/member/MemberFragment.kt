@@ -26,6 +26,7 @@ class MemberFragment : BaseFragment<FragmentMemberBinding, MemberViewModel>(),
     private var page = 1
     private var totalPage: Int = 1
     private var isLoading = false
+    private var searchText = ""
 
     override var getLayoutId: Int = R.layout.fragment_member
     override var getViewModel: Class<MemberViewModel> = MemberViewModel::class.java
@@ -46,15 +47,18 @@ class MemberFragment : BaseFragment<FragmentMemberBinding, MemberViewModel>(),
             nestedScroll.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, oldScrollY ->
                 Log.e("DY", scrollY.toString())
                 if (v.getChildAt(v.childCount - 1) != null) {
-                    if (scrollY >= (v.getChildAt(v.childCount - 1).measuredHeight - v.measuredHeight) && scrollY > oldScrollY) {
+                    val maxScroll =
+                        (v.getChildAt(v.childCount - 1).measuredHeight - v.measuredHeight)
+                    Log.e("PATOKAN", maxScroll.toString())
+                    if (scrollY >= maxScroll && scrollY > oldScrollY) {
                         val visibleItemCount = layoutManagers.childCount
                         val total = layoutManagers.itemCount
                         val pastVisibleItem = layoutManagers.findFirstVisibleItemPosition()
                         if (!isLoading && page < totalPage) {
                             if (visibleItemCount + pastVisibleItem >= total) {
                                 page++
-                                if (!homeEtSearch.text.isBlank()) {
-                                    getUsers(false, homeEtSearch.text.toString())
+                                if (searchText != "") {
+                                    getUsers(false, searchText)
                                 } else {
                                     userDefault()
                                 }
@@ -100,6 +104,7 @@ class MemberFragment : BaseFragment<FragmentMemberBinding, MemberViewModel>(),
                     var handled = false
 
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                        searchText = this.text.toString()
                         searchUser()
                         handled = true
                     }
@@ -109,6 +114,7 @@ class MemberFragment : BaseFragment<FragmentMemberBinding, MemberViewModel>(),
 
             // Set button search clickListener
             homeBtnSearch.setOnClickListener {
+                searchText = homeEtSearch.text.toString()
                 searchUser()
             }
         }
@@ -131,11 +137,12 @@ class MemberFragment : BaseFragment<FragmentMemberBinding, MemberViewModel>(),
                 shimmerMember.startShimmer()
                 shimmerMember.show()
                 memberProgressBar.show()
+                Log.e("SEARCH TEXT", searchText)
                 context?.hideKeyboard(requireView())
 
                 page = 1
                 rvUserSearchAdapter.clear()
-                getUsers(false, homeEtSearch.text.toString())
+                getUsers(false, searchText)
             }
         }
     }
@@ -186,6 +193,7 @@ class MemberFragment : BaseFragment<FragmentMemberBinding, MemberViewModel>(),
 
     override fun onRefresh() {
         mViewBinding.homeEtSearch.text = null
+        searchText = ""
         page = 1
         rvUserSearchAdapter.clear()
         getUsers(true, "")

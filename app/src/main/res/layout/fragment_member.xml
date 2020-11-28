@@ -101,12 +101,6 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <include
-                layout="@layout/include_placeholder_view"
-                android:visibility="@{placeholder.show? View.VISIBLE : View.GONE}"
-                bind:data="@{placeholder}"
-                tools:visibility="visible" />
-
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_member"
                 android:layout_width="match_parent"
@@ -147,6 +141,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
+                        <include
+                            layout="@layout/include_placeholder_view"
+                            android:visibility="@{placeholder.show? View.VISIBLE : View.GONE}"
+                            bind:data="@{placeholder}"
+                            tools:visibility="visible" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/member_rv_user"
